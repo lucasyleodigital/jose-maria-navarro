@@ -576,3 +576,119 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(5px);
   .recorte-cap q { font-size: 1.3rem; }
   .field label, .btn { font-size: 1.02rem; }
 }
+
+/* ============================================================
+   MÓVIL: escala de lectura cómoda (revisión 2)
+   Todo lo que va en rem crece un 12,5 %; titulares, botones y cartas
+   se reajustan para leerse sin acercar la vista.
+   ============================================================ */
+@media (max-width: 640px) {
+  html { font-size: 112.5%; }
+  body { font-size: 1.05rem; line-height: 1.6; }
+  :root { --nav-h: 72px; --gutter: 20px; }
+
+  /* Cabecera y menú */
+  .brand { font-size: 1.12rem; gap: 10px; }
+  .brand-logo { height: 52px; }
+  .menu-btn { width: 52px; height: 52px; }
+  .menu-btn .icon { width: 26px; height: 26px; }
+  .mobile-menu { padding-top: 110px; gap: 14px; }
+  .mobile-menu a { font-size: 2.3rem; }
+
+  /* Hero */
+  .hero-copy { padding-top: calc(var(--nav-h) + 18px); }
+  .hero-title { font-size: clamp(2.9rem, 13.5vw, 3.6rem); line-height: .95; }
+  .hero-role { font-size: 1.05rem; padding: .55em 1.1em .55em .55em; }
+  .hero-sub { font-size: 1.12rem; line-height: 1.5; max-width: none; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .hero-actions .btn { justify-content: center; }
+  .btn { font-size: 1.05rem; padding: .95em 1.4em; }
+  .hud-label, .skip-tour { font-size: 1rem; }
+  .die { --d: 46px; }
+
+  /* Cartas del recorrido: la carta manda y el tablero queda arriba */
+  .motion .cap { left: 12px; right: 12px; bottom: 76px; padding: 18px 18px 20px; border-radius: 20px; max-height: calc(100dvh - var(--nav-h) - 90px); }
+  .motion .cap-top { margin-bottom: 10px; }
+  .cap-n { width: 46px; height: 46px; font-size: 1.1rem; }
+  .motion .cap-year, .cap-year { font-size: 2.6rem; }
+  .cap-title { font-size: 1.45rem; line-height: 1.15; }
+  .cap-place { font-size: 1rem !important; }
+  .cap p, .motion .cap p { font-size: 1.12rem; line-height: 1.55; }
+  .motion .cap-quote, .cap-quote { font-size: 1.3rem; line-height: 1.2; padding: 14px 16px; }
+  .motion .cap-photo, .motion .cap-photo.is-portrait { flex-basis: 170px; }
+  .outro .display { font-size: 3rem; }
+  .outro .lead { font-size: 1.15rem; }
+
+  /* Secciones */
+  .h2 { font-size: 2.6rem; }
+  .manifesto { font-size: 2.75rem; }
+  .lead, .filosofia-body .lead, .juego-head .lead { font-size: 1.15rem; line-height: 1.55; }
+  .cite { font-size: 1.05rem; }
+  .carta { grid-template-columns: 64px minmax(0, 1fr); padding: 16px; }
+  .carta-band { width: 64px; height: 64px; }
+  .carta h3 { font-size: 1.35rem; }
+  .carta p { font-size: 1.05rem; }
+  .carta .pair { font-size: 1.1rem; }
+
+  /* Juego */
+  .juego-cats li { font-size: 1rem; padding: .5em 1em .5em .5em; }
+  .panel { padding: 20px 18px; }
+  .panel h3 { font-size: 1.45rem; }
+  .panel p { font-size: 1.08rem; }
+  .stat { font-size: 1rem; padding: .4em .85em; }
+  .answer { font-size: 1.08rem; padding: 1em; }
+  .answer .key { width: 34px; height: 34px; }
+  .feedback { font-size: 1.05rem; }
+  .q-kind { font-size: 1rem; }
+  .oca { padding: 10px; border-radius: 20px; }
+  .ocell .n { font-size: 14px; }
+  .ocell .lbl { font-size: 10.5px; }
+
+  /* Blog, prensa, contacto, pie */
+  .feature h3 { font-size: 2rem; }
+  .feature p, .post-card p { font-size: 1.08rem; }
+  .meta-line, .post-row .d { font-size: 1rem; }
+  .post-row .t { font-size: 1.2rem; }
+  .post-row a { grid-template-columns: 84px 1fr; }
+  .post-row img, .post-row-ph { width: 84px; height: 84px; }
+  .recorte-cap .src { font-size: 1.1rem; }
+  .recorte-cap q { font-size: 1.4rem; }
+  .contacto .display { font-size: 2.6rem; }
+  .mail-big { font-size: 1.15rem; }
+  .field label { font-size: 1.05rem; }
+  .field input, .field textarea, .field select { font-size: 1.08rem; padding: .95em 1em; }
+  .check { font-size: 1.02rem; }
+  .footer { font-size: 1.02rem; padding: 40px 0; }
+  .footer .wrap, .footer ul { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+  /* Páginas interiores */
+  .page-head .display { font-size: 2.7rem; }
+  .article-head h1 { font-size: 2.3rem; }
+  .prose { font-size: 1.12rem; line-height: 1.7; }
+  .prose blockquote { font-size: 1.25em; }
+  .back { font-size: 1.02rem; }
+  .page-head .mago-peek { display: none; }
+}
+@media (max-width: 640px) {
+  .brand { font-size: 1.02rem; white-space: nowrap; }
+  .manifesto { font-size: 10.4vw; }
+  .contacto .display { font-size: 9.8vw; }
+  .contacto-grid { grid-template-columns: minmax(0, 1fr); }
+  .mail-big { font-size: 1rem; overflow-wrap: anywhere; word-break: normal; }
+  .hero-actions .btn--ghost { background: var(--white); }
+  .hero-copy { z-index: calc(var(--z-board) + 3); }
+  .hud-label { display: none; }
+  .skip-tour { bottom: 20px; }
+  .h2, .page-head .display { overflow-wrap: anywhere; }
+  .motion .outro { bottom: 96px; }
+  .outro .display { font-size: 12vw; }
+}
+@media (max-width: 640px) and (max-height: 720px) {
+  .motion .cap { padding: 14px 16px 16px; }
+  .motion .cap-top { margin-bottom: 6px; }
+  .motion .cap-n { width: 38px; height: 38px; }
+  .motion .cap-quote { font-size: 1.1rem; padding: 10px 12px; margin-bottom: 8px; }
+  .motion .cap-year { font-size: 2rem; }
+  .motion .cap-title { font-size: 1.22rem; }
+  .motion .cap p { font-size: 1.02rem; line-height: 1.5; }
+}

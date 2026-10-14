@@ -119,7 +119,7 @@
     const { desk } = ctx.conditions;
     const V = desk
       ? { hero: { rx: 54, rz: 64, s: 0.64 }, tour: { rx: 50, rz: -18, s: 1.25 }, end: { rx: 38, rz: -10, s: 0.62 }, camTop: '56%', camTourTop: '54%', camLeft: '73%', camTourLeft: '64%', camEndLeft: '66%' }
-      : { hero: { rx: 54, rz: 64, s: 0.5 }, tour: { rx: 50, rz: -18, s: 0.82 }, end: { rx: 40, rz: -12, s: 0.42 }, camTop: '83%', camTourTop: '34%', camLeft: '52%', camTourLeft: '50%', camEndLeft: '50%' };
+      : { hero: { rx: 54, rz: 64, s: 0.5 }, tour: { rx: 50, rz: -18, s: 0.82 }, end: { rx: 40, rz: -12, s: 0.36 }, camTop: '90%', camTourTop: '27%', camLeft: '52%', camTourLeft: '50%', camEndLeft: '50%' };
     const deg = (v) => v + 'deg';
 
     gsap.set(tilt, { '--rx': deg(V.hero.rx), '--rz': deg(V.hero.rz), '--s': V.hero.s });
@@ -164,7 +164,7 @@
     tl.to(caps[caps.length - 1], { autoAlpha: 0, y: -30, duration: 0.4, ease: 'power2.in' }, endAt)
       .fromTo(outro, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: 'expo.out' }, endAt + 0.45)
       .to(tilt, { '--rx': deg(V.end.rx), '--rz': deg(V.end.rz), '--s': V.end.s, duration: 1 }, endAt)
-      .to(cam, { left: V.camEndLeft, top: desk ? '52%' : '45%', duration: 1 }, endAt)
+      .to(cam, { left: V.camEndLeft, top: desk ? '52%' : '30%', duration: 1 }, endAt)
       .to(board, { x: -W / 2, y: -W / 2, duration: 1 }, endAt)
       .to({}, { duration: 0.6 })
       .addLabel('end');

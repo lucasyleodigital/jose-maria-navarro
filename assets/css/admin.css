@@ -124,3 +124,22 @@ body.admin { background: var(--white); min-height: 100dvh; }
   .a-actions { grid-column: 1 / -1; justify-content: flex-end; }
   .a-user { display: none; }
 }
+
+/* Móvil: nada se sale de la pantalla y todo se toca con el dedo */
+.login { grid-template-columns: minmax(0, 1fr); }
+.login-card .btn { white-space: normal; text-align: center; }
+@media (max-width: 640px) {
+  body.admin { font-size: 18px; }
+  .login-card { padding: 24px 20px; }
+  .login-card h1 { font-size: 1.8rem; }
+  .a-input, .a-textarea { font-size: 1.05rem; padding: .9em 1em; }
+  .a-bar .wrap { height: 60px; }
+  .a-iconbtn { padding: .55em .7em; font-size: .95rem; }
+  .a-iconbtn span, .a-bar .brand span { display: none; }
+  .a-head h1 { font-size: 1.9rem; }
+  .a-row h2 { font-size: 1.1rem; white-space: normal; }
+  .a-meta, .pill { font-size: .95rem; }
+  .a-btn-sm { font-size: 1rem; padding: .65em .9em; }
+  .editor-wrap .ql-editor { font-size: 1.1rem; padding: 18px 16px; }
+  .tips, .hint, .count, .saved-note { font-size: .98rem !important; }
+}
