@@ -118,7 +118,7 @@
   mm.add({ desk: '(min-width: 901px)', mob: '(max-width: 900px)' }, (ctx) => {
     const { desk } = ctx.conditions;
     const V = desk
-      ? { hero: { rx: 54, rz: 64, s: 0.64 }, tour: { rx: 50, rz: -18, s: 1.25 }, end: { rx: 38, rz: -10, s: 0.62 }, camTop: '56%', camTourTop: '54%', camLeft: '73%', camTourLeft: '64%', camEndLeft: '66%' }
+      ? { hero: { rx: 54, rz: 64, s: 0.64 }, tour: { rx: 50, rz: -18, s: 1.25 }, end: { rx: 38, rz: -10, s: 0.62 }, camTop: '56%', camTourTop: '54%', camLeft: '73%', camTourLeft: '72%', camEndLeft: '66%' }
       : { hero: { rx: 54, rz: 64, s: 0.5 }, tour: { rx: 50, rz: -18, s: 0.82 }, end: { rx: 40, rz: -12, s: 0.36 }, camTop: '90%', camTourTop: '27%', camLeft: '52%', camTourLeft: '50%', camEndLeft: '50%' };
     const deg = (v) => v + 'deg';
 

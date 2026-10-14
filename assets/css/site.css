@@ -247,7 +247,7 @@ p { margin: 0 0 1em; }
 /* La foto cede el espacio: el texto de la carta se ve siempre entero */
 .motion .cap { display: flex; flex-direction: column; }
 .motion .cap > * { flex-shrink: 0; }
-.motion .cap-photo, .motion .cap-photo.is-portrait { aspect-ratio: auto; flex: 0 1 260px; min-height: 72px; }
+.motion .cap-photo, .motion .cap-photo.is-portrait { aspect-ratio: auto; flex: 0 1 300px; min-height: 90px; }
 .motion .cap-photo img { object-position: 50% 25%; }
 @media (max-height: 640px) { .motion .cap-photo { display: none; } }
 
@@ -692,3 +692,27 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(5px);
   .motion .cap-title { font-size: 1.22rem; }
   .motion .cap p { font-size: 1.02rem; line-height: 1.5; }
 }
+
+/* Fotos del recorrido completas, sin recortar: la foto entera sobre un fondo
+   hecho con la misma foto desenfocada */
+.cap-photo { position: relative; isolation: isolate; }
+.cap-photo::before {
+  content: ''; position: absolute; inset: -20px; z-index: -1;
+  background: var(--src) center / cover no-repeat; filter: blur(16px) brightness(.55) saturate(.9);
+}
+.cap-photo img, .motion .cap-photo img { object-fit: contain; object-position: center; }
+
+/* Escritorio: carta apaisada, foto completa a la izquierda a toda la altura y texto a la derecha */
+@media (min-width: 901px) {
+  .motion .cap {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); column-gap: 24px; align-content: start;
+    width: clamp(600px, 52vw, 820px); padding: 20px 24px 22px 20px;
+  }
+  .motion .cap > :not(.cap-photo):not(.cap-quote) { grid-column: 2; }
+  .motion .cap-photo, .motion .cap-quote { grid-column: 1; grid-row: 1 / span 6; margin: 0; align-self: stretch; }
+  .motion .cap-photo, .motion .cap-photo.is-portrait { flex: none; min-height: 0; height: auto; }
+  .motion .cap-photo img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .motion .cap-quote { display: flex; align-items: center; font-size: clamp(1.3rem, 1rem + .9vw, 1.8rem); padding: 22px; }
+  .motion .cap-photo { min-height: 240px; }
+}
+@media (min-width: 901px) and (max-height: 640px) { .motion .cap-photo { display: block; min-height: 200px; } }
