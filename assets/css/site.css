@@ -79,7 +79,7 @@ p { margin: 0 0 1em; }
   padding: .82em 1.35em; border-radius: 999px; border: var(--stroke) solid var(--ink);
   background: var(--bg); color: var(--fg); font-family: var(--display); font-stretch: 112%; font-weight: 760;
   font-size: 1rem; letter-spacing: .01em; text-decoration: none; cursor: pointer;
-  box-shadow: 0 6px 0 -1px rgba(23, 24, 28, .0), var(--shadow);
+  box-shadow: var(--shadow);
   transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), background-color .25s, color .25s;
 }
 .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
