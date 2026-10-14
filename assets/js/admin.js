@@ -33,7 +33,7 @@
   function shell(inner) {
     app.innerHTML = `
       <header class="a-bar"><div class="wrap">
-        <a class="brand" href="#/" aria-label="Panel del autor"><span class="brand-mark" aria-hidden="true">JMN</span><span>Panel del autor</span></a>
+        <a class="brand" href="#/" aria-label="Panel del autor"><img class="brand-logo" src="${ROOT}assets/img/mago.webp" alt="" width="230" height="365"><span>Panel del autor</span></a>
         <div class="a-bar-r">
           <span class="a-user">${esc(session?.user?.email || '')}</span>
           <a class="a-iconbtn" href="../" target="_blank" rel="noopener">${icon('eye')} Ver la web</a>

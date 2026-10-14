@@ -166,13 +166,25 @@
       .to(tilt, { '--rx': deg(V.end.rx), '--rz': deg(V.end.rz), '--s': V.end.s, duration: 1 }, endAt)
       .to(cam, { left: V.camEndLeft, top: desk ? '52%' : '45%', duration: 1 }, endAt)
       .to(board, { x: -W / 2, y: -W / 2, duration: 1 }, endAt)
-      .to({}, { duration: 0.6 });
+      .to({}, { duration: 0.6 })
+      .addLabel('end');
 
     const st = window.ScrollTrigger.create({
-      trigger: '.stage-pin', start: 'top top', end: () => '+=' + Math.round(window.innerHeight * (desk ? 9 : 8)),
-      pin: true, scrub: 0.8, animation: tl, anticipatePin: 1, invalidateOnRefresh: true
+      trigger: '.stage-pin', start: 'top top', end: () => '+=' + Math.round(window.innerHeight * (desk ? 12 : 11)),
+      pin: true, scrub: 0.8, animation: tl, anticipatePin: 1, invalidateOnRefresh: true,
+      // Al dejar de hacer scroll, el recorrido se detiene en la carta más cercana, entera y quieta
+      snap: { snapTo: 'labels', duration: { min: 0.35, max: 0.9 }, delay: 0.12, ease: 'power2.inOut' }
     });
 
+    window.__tour = { tl, st };
+    // Enlace directo a una carta del recorrido: #parada-1 ... #parada-9
+    const m = location.hash.match(/^#parada-(\d)$/);
+    if (m) requestAnimationFrame(() => {
+      const k = Math.min(stops.length, Number(m[1])) - 1;
+      const t = tl.labels['stop' + k];
+      window.scrollTo(0, st.start + (st.end - st.start) * t / tl.duration());
+      window.ScrollTrigger.update();
+    });
     // "Quién soy" lleva directamente a la primera casilla del recorrido
     specialTargets['quien-soy'] = () => {
       const p = tl.labels.stop0 / tl.duration();
