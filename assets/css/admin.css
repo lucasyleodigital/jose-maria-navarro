@@ -1,5 +1,5 @@
 /* Panel del autor: mismo mundo (tinta, amarillo, casillas) pero tranquilo y al servicio de la tarea. */
-body.admin { background: #f1efe8; min-height: 100dvh; }
+body.admin { background: var(--white); min-height: 100dvh; }
 .a-bar { position: sticky; top: 0; z-index: 30; background: var(--ink); color: var(--white); }
 .a-bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
 .a-bar .brand { color: var(--white); }
@@ -18,7 +18,7 @@ body.admin { background: #f1efe8; min-height: 100dvh; }
 .a-head p { margin: 8px 0 0; color: var(--ink-soft); }
 
 /* Login */
-.login { min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: var(--yellow); }
+.login { min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: var(--paper-2); }
 .login-card { width: min(440px, 100%); background: var(--card); border: var(--stroke) solid var(--ink); border-radius: 22px; padding: 30px; box-shadow: var(--shadow-lift); position: relative; }
 .login-card h1 { font-family: var(--display); font-stretch: 115%; font-weight: 830; font-size: 1.9rem; line-height: 1.02; margin: 0 0 8px; }
 .login-card > p { color: var(--ink-soft); margin-bottom: 22px; }

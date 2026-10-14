@@ -9,13 +9,13 @@
   const gsap = hasGsap ? window.gsap : null;
 
   const SIGN = {
-    peligro: '<svg viewBox="0 0 60 60"><polygon points="30,5 56,52 4,52" fill="#fffefa" stroke="#d63a25" stroke-width="6" stroke-linejoin="round"/><rect x="27.5" y="22" width="5" height="16" rx="2" fill="#17181c"/><circle cx="30" cy="44" r="3" fill="#17181c"/></svg>',
-    prohibido: '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#fffefa" stroke="#d63a25" stroke-width="7"/></svg>',
-    obligacion: '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#1d3f91"/><path d="M30 44V18M20 28l10-10 10 10" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    stop: '<svg viewBox="0 0 60 60"><polygon points="19,4 41,4 56,19 56,41 41,56 19,56 4,41 4,19" fill="#d63a25" stroke="#17181c" stroke-width="2"/><polygon points="20,8 40,8 52,20 52,40 40,52 20,52 8,40 8,20" fill="none" stroke="#fffefa" stroke-width="2"/><text x="30" y="35.5" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="14" fill="#fffefa">STOP</text></svg>',
-    ceda: '<svg viewBox="0 0 60 60"><polygon points="4,8 56,8 30,54" fill="#fffefa" stroke="#d63a25" stroke-width="6" stroke-linejoin="round"/></svg>',
+    peligro: '<svg viewBox="0 0 60 60"><polygon points="30,5 56,52 4,52" fill="#fffefa" stroke="#b4442e" stroke-width="6" stroke-linejoin="round"/><rect x="27.5" y="22" width="5" height="16" rx="2" fill="#17181c"/><circle cx="30" cy="44" r="3" fill="#17181c"/></svg>',
+    prohibido: '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#fffefa" stroke="#b4442e" stroke-width="7"/></svg>',
+    obligacion: '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#1f2f5a"/><path d="M30 44V18M20 28l10-10 10 10" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    stop: '<svg viewBox="0 0 60 60"><polygon points="19,4 41,4 56,19 56,41 41,56 19,56 4,41 4,19" fill="#b4442e" stroke="#17181c" stroke-width="2"/><polygon points="20,8 40,8 52,20 52,40 40,52 20,52 8,40 8,20" fill="none" stroke="#fffefa" stroke-width="2"/><text x="30" y="35.5" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="14" fill="#fffefa">STOP</text></svg>',
+    ceda: '<svg viewBox="0 0 60 60"><polygon points="4,8 56,8 30,54" fill="#fffefa" stroke="#b4442e" stroke-width="6" stroke-linejoin="round"/></svg>',
     linea: '<svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="8" fill="#3b3c43"/><rect x="28" y="4" width="4" height="52" fill="#fffefa"/></svg>',
-    ambar: '<svg viewBox="0 0 60 60"><rect x="18" y="3" width="24" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="15" r="6" fill="#5a2a22"/><circle cx="30" cy="30" r="6" fill="#f4b400"/><circle cx="30" cy="45" r="6" fill="#1f3a2a"/></svg>',
+    ambar: '<svg viewBox="0 0 60 60"><rect x="18" y="3" width="24" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="15" r="6" fill="#5a2a22"/><circle cx="30" cy="30" r="6" fill="#d9a21b"/><circle cx="30" cy="45" r="6" fill="#1f3a2a"/></svg>',
     peatonal: '<svg viewBox="0 0 60 60"><rect x="16" y="3" width="28" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="17" r="8" fill="#3a1d18"/><circle cx="30" cy="42" r="8" fill="#3fbf6a"/></svg>'
   };
 
@@ -57,8 +57,10 @@
     ]
   };
 
-  // Tablero de 30 casillas en zigzag (6 x 5)
-  const COLS = 6, CELLS = 30;
+  // Tablero de 30 casillas en zigzag: 6 x 5 en pantalla grande, 5 x 6 en móvil (casillas más grandes)
+  const CELLS = 30;
+  const colsFor = () => (window.innerWidth < 640 ? 5 : 6);
+  let COLS = colsFor();
   const ZEBRA = [5, 14, 23];
   const RED = [10, 19, 27];
   const kinds = ['senales', 'calle', 'volante'];
@@ -75,24 +77,33 @@
   const cellIcon = { senales: 'alert-triangle', calle: 'walk', volante: 'steering-wheel' };
 
   let cellsHtml = '<svg class="oca-path" aria-hidden="true"><polyline class="road"/></svg>';
-  const byPos = [];
-  for (let i = 1; i <= CELLS; i++) { const { r, c } = posOf(i); byPos[r * COLS + c] = i; }
-  byPos.forEach((i) => {
+  for (let i = 1; i <= CELLS; i++) {
     const t = type[i];
     let inner = `<span class="n">${i}</span>`;
     let cls = 'ocell';
     if (kinds.includes(t)) { cls += ' k-' + t; inner += icon(cellIcon[t], 'glyph'); }
     else if (t === 'zebra') { cls += ' t-zebra'; }
-    else if (t === 'rojo') { cls += ' t-rojo'; inner += `<span class="glyph" style="display:grid">${SIGN.ambar.replace('#f4b400', '#3a3218').replace('#5a2a22', '#d63a25')}</span><span class="lbl">Rojo</span>`; }
+    else if (t === 'rojo') { cls += ' t-rojo'; inner += `<span class="glyph" style="display:grid">${SIGN.ambar.replace('#d9a21b', '#3a3218').replace('#5a2a22', '#b4442e')}</span><span class="lbl">Rojo</span>`; }
     else if (t === 'salida') { cls += ' t-salida'; inner += '<span class="lbl">Salida</span>' + icon('flag', 'glyph'); }
     else if (t === 'meta') { cls += ' t-meta'; inner += '<span class="lbl">Meta</span>' + icon('trophy', 'glyph'); }
     const label = { salida: 'Salida', meta: 'Meta', zebra: 'Paso de cebra', rojo: 'Semáforo en rojo' }[t] || KIND[t].name;
     cellsHtml += `<div class="${cls}" data-i="${i}" role="img" aria-label="Casilla ${i}: ${label}">${inner}</div>`;
-  });
+  }
   cellsHtml += `<div class="ficha" id="ficha"><img src="${ROOT}assets/img/mago.webp" alt="" width="230" height="365"></div>`;
   grid.innerHTML = cellsHtml;
   const cellEl = (i) => grid.querySelector(`.ocell[data-i="${i}"]`);
   const ficha = $('#ficha');
+  function layoutCells() {
+    COLS = colsFor();
+    grid.style.setProperty('--cols', COLS);
+    for (let i = 1; i <= CELLS; i++) {
+      const { r, c } = posOf(i);
+      const el = cellEl(i);
+      el.style.gridRow = String(r + 1);
+      el.style.gridColumn = String(c + 1);
+    }
+  }
+  layoutCells();
 
   function centerOf(i) {
     const el = cellEl(i);
@@ -256,5 +267,5 @@
     else viewRoll('Tu turno', 'Llega a la casilla 30. Las casillas de color tienen pregunta; el paso de cebra te adelanta; en el semáforo rojo esperas.');
   }
   boot();
-  new ResizeObserver(() => { drawRoad(); if (!busy) placeFicha(S.pos); }).observe(grid);
+  new ResizeObserver(() => { if (colsFor() !== COLS) layoutCells(); drawRoad(); if (!busy) placeFicha(S.pos); }).observe(grid);
 })();

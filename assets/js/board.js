@@ -36,13 +36,13 @@
     3: 'peligro', 9: 'prohibido', 15: 'obligacion', 21: 'ceda', 27: 'stop', 33: 'semaforo', 39: 'prohibido', 45: 'obligacion'
   };
   const SIGNS = {
-    stop: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="19,4 41,4 56,19 56,41 41,56 19,56 4,41 4,19" fill="#d63a25" stroke="#17181c" stroke-width="3"/><text x="30" y="36" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="15" fill="#fffefa">STOP</text></svg>',
-    semaforo: '<svg class="glyph" viewBox="0 0 60 60"><rect x="18" y="3" width="24" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="15" r="6" fill="#d63a25"/><circle cx="30" cy="30" r="6" fill="#6a5512"/><circle cx="30" cy="45" r="6" fill="#1f5a35"/></svg>',
-    peligro: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="30,5 56,52 4,52" fill="#fffefa" stroke="#d63a25" stroke-width="6" stroke-linejoin="round"/><rect x="27.5" y="22" width="5" height="16" rx="2" fill="#17181c"/><circle cx="30" cy="44" r="3" fill="#17181c"/></svg>',
-    ceda: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="4,8 56,8 30,54" fill="#fffefa" stroke="#d63a25" stroke-width="6" stroke-linejoin="round"/></svg>',
-    prohibido: '<svg class="glyph" viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#fffefa" stroke="#d63a25" stroke-width="7"/></svg>',
-    obligacion: '<svg class="glyph" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#1d3f91"/><path d="M30 44V18M20 28l10-10 10 10" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    estrella: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="30,4 37.6,21.6 56,23 42,35.4 46.2,54 30,44.2 13.8,54 18,35.4 4,23 22.4,21.6" fill="#1d3f91" stroke="#17181c" stroke-width="3" stroke-linejoin="round"/></svg>'
+    stop: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="19,4 41,4 56,19 56,41 41,56 19,56 4,41 4,19" fill="#b4442e" stroke="#17181c" stroke-width="3"/><text x="30" y="36" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="15" fill="#fffefa">STOP</text></svg>',
+    semaforo: '<svg class="glyph" viewBox="0 0 60 60"><rect x="18" y="3" width="24" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="15" r="6" fill="#b4442e"/><circle cx="30" cy="30" r="6" fill="#6a5512"/><circle cx="30" cy="45" r="6" fill="#1f5a35"/></svg>',
+    peligro: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="30,5 56,52 4,52" fill="#fffefa" stroke="#b4442e" stroke-width="6" stroke-linejoin="round"/><rect x="27.5" y="22" width="5" height="16" rx="2" fill="#17181c"/><circle cx="30" cy="44" r="3" fill="#17181c"/></svg>',
+    ceda: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="4,8 56,8 30,54" fill="#fffefa" stroke="#b4442e" stroke-width="6" stroke-linejoin="round"/></svg>',
+    prohibido: '<svg class="glyph" viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#fffefa" stroke="#b4442e" stroke-width="7"/></svg>',
+    obligacion: '<svg class="glyph" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#1f2f5a"/><path d="M30 44V18M20 28l10-10 10 10" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    estrella: '<svg class="glyph" viewBox="0 0 60 60"><polygon points="30,4 37.6,21.6 56,23 42,35.4 46.2,54 30,44.2 13.8,54 18,35.4 4,23 22.4,21.6" fill="#1f2f5a" stroke="#17181c" stroke-width="3" stroke-linejoin="round"/></svg>'
   };
 
   // Medidas del tablero (deben coincidir con el CSS)
@@ -118,8 +118,8 @@
   mm.add({ desk: '(min-width: 901px)', mob: '(max-width: 900px)' }, (ctx) => {
     const { desk } = ctx.conditions;
     const V = desk
-      ? { hero: { rx: 54, rz: 64, s: 0.72 }, tour: { rx: 50, rz: -18, s: 1.25 }, end: { rx: 38, rz: -10, s: 0.62 }, camTop: '55%', camTourTop: '54%', camLeft: '70%', camTourLeft: '64%', camEndLeft: '66%' }
-      : { hero: { rx: 54, rz: 64, s: 0.5 }, tour: { rx: 50, rz: -18, s: 0.82 }, end: { rx: 40, rz: -12, s: 0.42 }, camTop: '76%', camTourTop: '34%', camLeft: '52%', camTourLeft: '50%', camEndLeft: '50%' };
+      ? { hero: { rx: 54, rz: 64, s: 0.64 }, tour: { rx: 50, rz: -18, s: 1.25 }, end: { rx: 38, rz: -10, s: 0.62 }, camTop: '56%', camTourTop: '54%', camLeft: '73%', camTourLeft: '64%', camEndLeft: '66%' }
+      : { hero: { rx: 54, rz: 64, s: 0.5 }, tour: { rx: 50, rz: -18, s: 0.82 }, end: { rx: 40, rz: -12, s: 0.42 }, camTop: '83%', camTourTop: '34%', camLeft: '52%', camTourLeft: '50%', camEndLeft: '50%' };
     const deg = (v) => v + 'deg';
 
     gsap.set(tilt, { '--rx': deg(V.hero.rx), '--rz': deg(V.hero.rz), '--s': V.hero.s });
