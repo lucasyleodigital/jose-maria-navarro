@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artículo · José María Navarro</title>
+<meta name="description" content="Artículo de José María Navarro, educador vial.">
+<meta name="theme-color" content="#f4b400">
+<!-- Vista previa en GitHub Pages: quitar noindex al publicar en el dominio -->
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="José María Navarro, inicio"><span class="brand-mark" aria-hidden="true">JMN</span><span>José María Navarro</span></a>
+    <nav aria-label="Principal">
+      <ul class="nav-links">
+        <li><a href="../#quien-soy">Quién soy</a></li>
+        <li><a href="../#juego">Juegos</a></li>
+        <li><a href="./" aria-current="page">Blog</a></li>
+        <li><a href="../#prensa">Prensa</a></li>
+        <li class="nav-cta"><a href="../#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"><svg class="icon"><use href="../assets/img/icons.svg#i-menu-2"></use></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="menu-btn menu-close" type="button" aria-label="Cerrar menú"><svg class="icon"><use href="../assets/img/icons.svg#i-x"></use></svg></button>
+  <a href="../#quien-soy">Quién soy</a><a href="../#juego">Juegos</a><a href="./">Blog</a><a href="../#prensa">Prensa</a><a href="../#contacto">Contacto</a>
+</div>
+
+<main id="contenido">
+  <article id="article" aria-live="polite">
+    <header class="article-head"><div class="wrap"><div class="skeleton" style="height:220px;margin-bottom:40px"></div></div></header>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> José María Navarro</span>
+    <ul>
+      <li><a href="../legal/aviso-legal.html">Aviso legal</a></li>
+      <li><a href="../legal/privacidad.html">Política de privacidad</a></li>
+      <li><a href="../legal/cookies.html">Política de cookies</a></li>
+      <li><a href="../admin/">Acceso autor</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>window.SITE_ROOT = '../';</script>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script src="../assets/vendor/purify.min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/vendor/supabase.js"></script>
+<script src="../assets/js/seed-posts.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/common.js"></script>
+<script>
+(function () {
+  const { icon, esc, toast, reduce, hasGsap } = window.Site;
+  const root = document.getElementById('article');
+  const slug = new URLSearchParams(location.search).get('slug');
+
+  function notFound() {
+    document.title = 'Artículo no encontrado · José María Navarro';
+    root.innerHTML = `<header class="page-head"><div class="wrap"><h1 class="display">Esta casilla está vacía</h1>
+      <p class="lead">No encuentro ese artículo. Puede que se haya movido o que el enlace esté incompleto.</p>
+      <p style="margin-top:24px"><a class="btn" href="./">Ver todos los artículos ${icon('arrow-right', 'icon icon--go')}</a></p></div></header>`;
+  }
+  if (!slug) return notFound();
+
+  Promise.all([Blog.getPost(slug), Blog.listPosts()]).then(([p, all]) => {
+    if (!p || (p.status !== 'published' && !Blog.live)) return notFound();
+    document.title = `${p.title} · José María Navarro`;
+    document.querySelector('meta[name="description"]').setAttribute('content', p.excerpt || p.title);
+    const i = all.findIndex((x) => x.slug === p.slug);
+    const next = all[i + 1] || all[0];
+    const body = Blog.sanitize(Blog.fixPaths(p.content_html));
+    root.innerHTML = `
+      <header class="article-head">
+        <div class="wrap">
+          <a class="back" href="./">${icon('arrow-left')} Blog</a>
+          <h1>${esc(p.title)}</h1>
+          <div class="meta-line"><span>${icon('calendar')} ${esc(Blog.formatDate(p))}</span><span>${icon('clock')} ${Blog.readingMinutes(p.content_html)} min de lectura</span></div>
+          ${p.excerpt ? `<p class="excerpt">${esc(p.excerpt)}</p>` : '<div style="height:30px"></div>'}
+        </div>
+      </header>
+      ${p.cover_url ? `<div class="cover-band"><div class="article-cover"><img src="${esc(Blog.fixUrl(p.cover_url))}" alt=""></div></div>` : ''}
+      <div class="article-body">
+        <div class="prose" id="prose">${body}</div>
+        <div class="article-end">
+          <button class="btn btn--ghost" type="button" id="share">${icon('link')} Copiar enlace</button>
+          ${next && next.slug !== p.slug ? `<a class="btn" href="articulo.html?slug=${encodeURIComponent(next.slug)}">Siguiente artículo ${icon('arrow-right', 'icon icon--go')}</a>` : ''}
+        </div>
+      </div>`;
+    document.getElementById('share').addEventListener('click', async () => {
+      try {
+        if (navigator.share) await navigator.share({ title: p.title, url: location.href });
+        else { await navigator.clipboard.writeText(location.href); toast('Enlace copiado'); }
+      } catch (e) { /* cancelado */ }
+    });
+    document.querySelectorAll('#prose a[href^="http"]').forEach((a) => { a.target = '_blank'; a.rel = 'noopener'; });
+    if (hasGsap) {
+      ScrollTrigger.refresh();
+      gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '#prose', start: 'top 70%', end: 'bottom 80%', scrub: true } });
+      if (!reduce) gsap.from('.article-head h1, .article-head .meta-line, .article-head .excerpt, .article-cover img', { y: 40, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08 });
+    }
+  }).catch(notFound);
+})();
+</script>
+</body>
+</html>

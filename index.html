@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>José María Navarro · Educador vial</title>
+<meta name="description" content="José María Navarro, educador vial. Más de 30 años en Badalona enseñando a compartir la calle con juegos, programas y proyectos educativos. Blog, juego de la Oca vial y contacto.">
+<meta name="theme-color" content="#f4b400">
+<!-- Vista previa en GitHub Pages: quitar noindex al publicar en el dominio -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://soyjosemarianavarro.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="José María Navarro · Educador vial">
+<meta property="og:description" content="La educación vial es cosa de todos. Conoce su recorrido, juega a la Oca vial y lee su blog.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/mago.webp" as="image">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"José María Navarro","jobTitle":"Educador vial","address":{"@type":"PostalAddress","addressLocality":"Badalona","addressCountry":"ES"},"email":"mailto:info@soyjosemarianavarro.com","url":"https://soyjosemarianavarro.com/"}
+</script>
+</head>
+<body>
+<!--
+THESIS: La vida y el método de José María son un juego de mesa; la web es su tablero y el mago es la ficha. Rechaza la web de ponente (retrato + bio + tarjetas) y el cliché de señales y asfalto como decorado.
+OWN-WORLD: Tablero de la Oca impreso: campos enteros de amarillo, azul cobalto y rojo señal sobre tinta; casillas de cartón con trazo de 3px, números en Archivo expandido, dados, cartas y fichas. Todo encaja a casilla entera.
+STORY: El visitante ve quién es (educador vial), recorre su vida casilla a casilla, entiende su filosofía (la calle es de todos), juega y aprende, lee su blog y le escribe.
+FIRST VIEWPORT: Amarillo a sangre. Izquierda: NOMBRE gigante, píldora "Educador vial", frase de 18 palabras, Contáctame + Jugar. Derecha: tablero 3D en espiral inclinado, el mago-ficha en la salida, dado en el HUD.
+FORM: Tablero de la Oca vial, candidato 5 de 7 (tirada); seed 64ad52d7.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<svg class="sr-only" aria-hidden="true"><use href="assets/img/icons.svg#i-x"></use></svg>
+
+<header class="nav" id="nav" data-solid-from="#filosofia">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="José María Navarro, inicio"><span class="brand-mark" aria-hidden="true">JMN</span><span>José María Navarro</span></a>
+    <nav aria-label="Principal">
+      <ul class="nav-links">
+        <li><a href="#quien-soy">Quién soy</a></li>
+        <li><a href="#juego">Juegos</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#prensa">Prensa</a></li>
+        <li class="nav-cta"><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"><svg class="icon"><use href="assets/img/icons.svg#i-menu-2"></use></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="menu-btn menu-close" type="button" aria-label="Cerrar menú"><svg class="icon"><use href="assets/img/icons.svg#i-x"></use></svg></button>
+  <a href="#quien-soy">Quién soy</a>
+  <a href="#juego">Juegos</a>
+  <a href="#blog">Blog</a>
+  <a href="#prensa">Prensa</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<main id="contenido">
+  <section class="stage" id="inicio" aria-label="Presentación y recorrido">
+    <div class="stage-pin">
+      <div class="scene">
+        <div class="hero-copy">
+          <h1 class="display hero-title"><span>José María</span><span>Navarro</span></h1>
+          <p class="hero-role"><span class="pip"><svg class="icon"><use href="assets/img/icons.svg#i-flag"></use></svg></span>Educador vial</p>
+          <p class="hero-sub">Más de 30 años enseñando a compartir la calle jugando: peatones, pasajeros y conductores.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contacto">Contáctame <svg class="icon icon--go"><use href="assets/img/icons.svg#i-arrow-right"></use></svg></a>
+            <a class="btn btn--ghost" href="#juego"><svg class="icon"><use href="assets/img/icons.svg#i-dice-5"></use></svg> Jugar a la Oca vial</a>
+          </div>
+        </div>
+
+        <div class="cam" aria-hidden="true">
+          <div class="tilt" id="tilt">
+            <div class="board" id="board"></div>
+          </div>
+        </div>
+
+        <div class="hud" aria-hidden="true">
+          <span class="hud-label" id="hud-label">Salida</span>
+          <div class="die"><div class="die-cube" id="die"></div></div>
+        </div>
+        <div class="outro" id="outro" aria-hidden="true">
+          <p class="display">La partida sigue.</p>
+          <p class="lead">Hoy comparte lo aprendido en charlas, juegos y en su blog.</p>
+        </div>
+        <a class="skip-tour" href="#filosofia" id="skip-tour">Saltar el recorrido <svg class="icon"><use href="assets/img/icons.svg#i-arrow-right"></use></svg></a>
+      </div>
+
+      <span id="quien-soy" class="sr-only">Quién soy</span>
+      <h2 class="sr-only">Mi recorrido, casilla a casilla</h2>
+      <ol class="capitulos" id="capitulos">
+        <li class="cap" data-cell="1" data-color="yellow" data-yr="Salida">
+          <div class="cap-top"><span class="cap-n">1</span><span class="cap-place">Bienservida, Albacete</span></div>
+          <figure class="cap-photo is-portrait"><img src="assets/img/nino-bienservida.webp" alt="José María de niño, en Bienservida, agachado junto a un gato" loading="lazy" width="521" height="633"></figure>
+          <p class="cap-year">Salida</p>
+          <h3 class="cap-title">La primera señal la di yo</h3>
+          <p>Jugando al fútbol en la calle, el único que levantaba la mirada y gritaba «¡Cuidado, que pasa una señora!» era yo. Las vecinas se lo decían a mi madre: «Qué chiquillo más atento tienes».</p>
+        </li>
+        <li class="cap c-blue" data-cell="7" data-color="blue" data-yr="Esplai">
+          <div class="cap-top"><span class="cap-n">7</span><span class="cap-place">Badalona</span></div>
+          <blockquote class="cap-quote">«Diseñábamos juegos educativos para niños y niñas de 6 a 14 años.»</blockquote>
+          <p class="cap-year">12 años</p>
+          <h3 class="cap-title">Badalona, el esplai y los primeros juegos</h3>
+          <p>Con 12 años llegué a Badalona, la ciudad que siento como propia. Fui monitor de un esplai en la parroquia del barrio. Y ya entonces avisaba a mis amigos: ese ciclomotor era un riesgo.</p>
+        </li>
+        <li class="cap c-red" data-cell="13" data-color="red" data-yr="1980">
+          <div class="cap-top"><span class="cap-n">13</span><span class="cap-place">Guardia Urbana de Badalona</span></div>
+          <figure class="cap-photo is-portrait"><img src="assets/img/uniforme-80s.webp" alt="José María con el uniforme de la Guardia Urbana de Badalona en los años 80" loading="lazy" width="832" height="1000"></figure>
+          <p class="cap-year">1980</p>
+          <h3 class="cap-title">Primera promoción democrática</h3>
+          <p>Con 22 años entré en la Guardia Urbana. Aquel agosto, a las cinco de la mañana, tuve que dar a una familia una noticia que cambió mi forma de valorar la vida y mi trabajo.</p>
+        </li>
+        <li class="cap" data-cell="19" data-color="yellow" data-yr="Moto">
+          <div class="cap-top"><span class="cap-n">19</span><span class="cap-place">Unidad de motoristas</span></div>
+          <figure class="cap-photo"><img src="assets/img/moto-roja.webp" alt="José María sobre una moto roja, con casco" loading="lazy" width="500" height="500"></figure>
+          <p class="cap-year">1980-1989</p>
+          <h3 class="cap-title">Mejor evitar el riesgo que poner la multa</h3>
+          <p>Diez años de motorista. Me ponía a regular el cruce antes de que se formara el atasco, y en un lugar visible para que nadie hiciera el giro peligroso. Sin infracción, no hay accidente.</p>
+        </li>
+        <li class="cap c-blue" data-cell="25" data-color="blue" data-yr="1989">
+          <div class="cap-top"><span class="cap-n">25</span><span class="cap-place">Servicio de colegios</span></div>
+          <figure class="cap-photo"><img src="assets/img/aula.webp" alt="José María de uniforme en un aula, junto a un alumno" loading="lazy" width="600" height="468"></figure>
+          <p class="cap-year">1989</p>
+          <h3 class="cap-title">Una máquina de diapositivas y mucho por hacer</h3>
+          <p>Me ofrecieron ir a los colegios. El material: diapositivas de señales y de guardias de Madrid con salacot. La educación vial para una movilidad segura, tal como hoy la conocemos, no existía.</p>
+        </li>
+        <li class="cap c-red" data-cell="31" data-color="red" data-yr="1990">
+          <div class="cap-top"><span class="cap-n">31</span><span class="cap-place">Badalona 2000</span></div>
+          <figure class="cap-photo"><img src="assets/img/senales-coche.webp" alt="José María de uniforme sujetando señales de tráfico junto a un coche" loading="lazy" width="1290" height="936"></figure>
+          <p class="cap-year">1990</p>
+          <h3 class="cap-title">«Estamos forjando a los ciudadanos del mañana»</h3>
+          <p>Con Alicia Palacios y el Institut Municipal d'Educació rehicimos el programa: menos charla pasiva, más juego, y la educación vial dentro del proyecto educativo de cada escuela.</p>
+        </li>
+        <li class="cap" data-cell="37" data-color="yellow" data-yr="1998">
+          <div class="cap-top"><span class="cap-n">37</span><span class="cap-place">El Punt</span></div>
+          <figure class="cap-photo is-portrait"><img src="assets/img/perfil-1.webp" alt="Retrato de José María de uniforme, publicado en El Punt" loading="lazy" width="468" height="606"></figure>
+          <p class="cap-year">7.199</p>
+          <h3 class="cap-title">Alumnos en un solo curso</h3>
+          <p>En 1998, en 60 centros de Badalona. «Me ha costado dos años vencer la tentación de pasar un semáforo en rojo. Cumplir las normas es ir a contracorriente.»</p>
+        </li>
+        <li class="cap c-blue" data-cell="43" data-color="blue" data-yr="Padre">
+          <div class="cap-top"><span class="cap-n">43</span><span class="cap-place">En casa</span></div>
+          <figure class="cap-photo"><img src="assets/img/con-su-hijo.webp" alt="José María joven con su hijo pequeño en brazos" loading="lazy" width="575" height="322"></figure>
+          <p class="cap-year">Padre</p>
+          <h3 class="cap-title">«Los niños me vuelven loco»</h3>
+          <p>Dos hijos en casa y miles en las aulas. Cada año, además, un encuentro con las 300 o 400 personas que, como mis padres, emigraron de Bienservida a Badalona.</p>
+        </li>
+        <li class="cap c-red" data-cell="49" data-color="red">
+          <div class="cap-top"><span class="cap-n">49</span><span class="cap-place">Meta</span></div>
+          <figure class="cap-photo is-portrait"><img src="assets/img/jm-hoy.webp" alt="José María Navarro en la actualidad, con gafas y traje" loading="lazy" width="323" height="394"></figure>
+          <p class="cap-year">Hoy</p>
+          <h3 class="cap-title">Una filosofía de vida</h3>
+          <p>30 años diseñando juegos, actividades, programas y proyectos educativos. Siempre en equipo, y siempre con la misma idea: cada uno de nosotros es responsable de su ejemplo.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="filosofia on-blue" id="filosofia" aria-labelledby="filosofia-t">
+    <div class="wrap">
+      <h2 class="manifesto" id="filosofia-t">La educación vial es <span class="accent">cosa de todos.</span></h2>
+      <div class="filosofia-body">
+        <div>
+          <p class="lead">La Dirección General de Tráfico hablaba de educar a <strong>los conductores del mañana</strong>. Yo pensaba, y sigo pensando, que la educación vial es el medio para educarnos todos: <strong>peatones, pasajeros o conductores</strong>, personas que compartimos la calle.</p>
+          <cite class="cite">José María Navarro</cite>
+        </div>
+        <div class="deck" id="deck">
+          <article class="carta">
+            <div class="carta-band" aria-hidden="true"><svg viewBox="0 0 60 60"><polygon points="30,5 56,52 4,52" fill="#fffefa" stroke="#17181c" stroke-width="4" stroke-linejoin="round"/><polygon points="30,17 46,46 14,46" fill="none" stroke="#d63a25" stroke-width="5" stroke-linejoin="round"/></svg></div>
+            <h3>Valores universales</h3>
+            <p>Lo que nos hace personas en cualquier calle del mundo.</p>
+            <p class="pair">Responsabilidad y convivencia</p>
+          </article>
+          <article class="carta">
+            <div class="carta-band" aria-hidden="true"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#fffefa" stroke="#17181c" stroke-width="4"/><circle cx="30" cy="30" r="17" fill="#1d3f91"/><path d="M22 30h16M30 22v16" stroke="#fffefa" stroke-width="5" stroke-linecap="round"/></svg></div>
+            <h3>Valores democráticos</h3>
+            <p>La calle es el primer espacio público que compartimos.</p>
+            <p class="pair">Igualdad y libertad</p>
+          </article>
+          <article class="carta">
+            <div class="carta-band" aria-hidden="true"><svg viewBox="0 0 60 60"><rect x="18" y="4" width="24" height="52" rx="8" fill="#17181c"/><circle cx="30" cy="16" r="6" fill="#5a2a22"/><circle cx="30" cy="30" r="6" fill="#5a4a14"/><circle cx="30" cy="44" r="6" fill="#7dffae"/></svg></div>
+            <h3>Movilidad segura</h3>
+            <p>Anticiparse al riesgo antes de que haya que lamentarlo.</p>
+            <p class="pair">Prevención y autoprotección</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="juego on-red" id="juego" aria-labelledby="juego-t">
+    <div class="wrap">
+      <div class="juego-head">
+        <div>
+          <h2 class="h2" id="juego-t">La Oca vial</h2>
+          <p class="lead">Tira el dado y avanza. En cada casilla de color, una pregunta: si aciertas, sigues; si fallas, aprendes por qué. De paso de cebra a paso de cebra, y tiro porque me lleva la corriente.</p>
+        </div>
+        <ul class="juego-cats" aria-label="Tipos de casilla">
+          <li><span class="sw k-senales"></span>Aprendemos las señales</li>
+          <li><span class="sw k-calle"></span>¿Sabemos movernos hoy?</li>
+          <li><span class="sw k-volante"></span>Nos movemos al volante</li>
+        </ul>
+      </div>
+      <div class="mesa">
+        <div class="oca" id="oca" aria-label="Tablero del juego">
+          <div class="oca-grid" id="oca-grid"></div>
+        </div>
+        <div class="panel" id="panel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-home" id="blog" aria-labelledby="blog-t">
+    <div class="wrap">
+      <div class="blog-home-head">
+        <h2 class="h2" id="blog-t">¿Qué estoy pensando?</h2>
+        <a class="btn btn--ghost" href="blog/">Todos los artículos <svg class="icon icon--go"><use href="assets/img/icons.svg#i-arrow-right"></use></svg></a>
+      </div>
+      <div id="blog-feature"><div class="skeleton" style="height:380px"></div></div>
+      <ul class="post-rows" id="blog-rows"></ul>
+    </div>
+  </section>
+
+  <section class="prensa" id="prensa" aria-labelledby="prensa-t">
+    <div class="wrap prensa-grid">
+      <div class="prensa-intro">
+        <h2 class="h2" id="prensa-t">En prensa</h2>
+        <p class="lead">Lo que contaron de su trabajo los periódicos de Badalona y Cataluña.</p>
+        <figure class="tira">
+          <img src="assets/img/perfil-2.webp" alt="José María de perfil con la gorra de la Guardia Urbana" loading="lazy" width="562" height="725">
+          <img src="assets/img/perfil-3.webp" alt="José María de perfil, sonriendo, con la gorra de la Guardia Urbana" loading="lazy" width="460" height="608">
+          <figcaption>«Els nens em tornen boig». El Punt, 1998.</figcaption>
+        </figure>
+      </div>
+      <a class="recorte" href="blog/articulo.html?slug=entrevista-el-punt-1998">
+        <div class="recorte-img"><img src="assets/img/prensa-elpunt.webp" alt="Página de El Punt con la entrevista a José María Navarro" loading="lazy" width="417" height="600"></div>
+        <div class="recorte-cap">
+          <span class="src">El Punt, 1998</span>
+          <q>Me ha costado vencer la tentación de pasar un semáforo en rojo.</q>
+          <span class="link-arrow">Leer la entrevista <svg class="icon"><use href="assets/img/icons.svg#i-arrow-right"></use></svg></span>
+        </div>
+      </a>
+      <a class="recorte" href="blog/articulo.html?slug=entrevista-badalona-2000-1990">
+        <div class="recorte-img"><img src="assets/img/prensa-badalona2000.webp" alt="Página de Badalona 2000: Civismo en las calles" loading="lazy" width="600" height="779"></div>
+        <div class="recorte-cap">
+          <span class="src">Badalona 2000, 1990</span>
+          <q>Estamos forjando a los ciudadanos del mañana.</q>
+          <span class="link-arrow">Leer la entrevista <svg class="icon"><use href="assets/img/icons.svg#i-arrow-right"></use></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="contacto on-dark" id="contacto" aria-labelledby="contacto-t">
+    <div class="wrap contacto-grid">
+      <div>
+        <h2 class="display" id="contacto-t">Trabajemos <span class="accent">juntos</span></h2>
+        <p class="lead" style="margin-top:1em;color:#d8d8dc">Charlas en colegios y esplais, formación para docentes, proyectos con ayuntamientos o una simple pregunta. Escríbeme.</p>
+        <a class="mail-big" id="mail-big" href="mailto:info@soyjosemarianavarro.com"><svg class="icon"><use href="assets/img/icons.svg#i-mail"></use></svg><span>info@soyjosemarianavarro.com</span></a>
+        <ul class="socials" id="socials"></ul>
+      </div>
+      <form class="form" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="f-name">Nombre</label><input id="f-name" name="name" autocomplete="name" required><span class="err" id="f-name-err"></span></div>
+          <div class="field"><label for="f-email">Correo electrónico</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err" id="f-email-err"></span></div>
+        </div>
+        <div class="field">
+          <label for="f-topic">¿Sobre qué quieres hablar?</label>
+          <select id="f-topic" name="topic">
+            <option>Charla en un colegio o esplai</option>
+            <option>Formación o proyecto educativo</option>
+            <option>Ayuntamiento o entidad</option>
+            <option>Prensa</option>
+            <option>Otra cosa</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="message" required></textarea><span class="err" id="f-msg-err"></span></div>
+        <label class="check"><input type="checkbox" id="f-ok" required><span>He leído la <a href="legal/privacidad.html">política de privacidad</a> y acepto que se usen mis datos para responderme.</span></label>
+        <span class="err" id="f-ok-err" style="color:#ffb4a6;font-size:.92rem"></span>
+        <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off">
+        <div><button class="btn btn--yellow" type="submit" id="f-send">Enviar mensaje <svg class="icon icon--go"><use href="assets/img/icons.svg#i-send"></use></svg></button></div>
+        <p class="form-status" id="f-status" role="status"></p>
+      </form>
+    </div>
+    <img class="mago-saluda" src="assets/img/mago.webp" alt="" width="230" height="365" loading="lazy">
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> José María Navarro</span>
+    <ul>
+      <li><a href="legal/aviso-legal.html">Aviso legal</a></li>
+      <li><a href="legal/privacidad.html">Política de privacidad</a></li>
+      <li><a href="legal/cookies.html">Política de cookies</a></li>
+      <li><a href="admin/">Acceso autor</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>window.SITE_ROOT = '';</script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/purify.min.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/vendor/supabase.js"></script>
+<script src="assets/js/seed-posts.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/board.js"></script>
+<script src="assets/js/oca.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
