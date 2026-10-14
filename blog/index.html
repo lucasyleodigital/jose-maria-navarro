@@ -84,8 +84,8 @@
       <a class="post-card" href="articulo.html?slug=${encodeURIComponent(p.slug)}" data-reveal>
         <div class="media${p.cover_url ? '' : ' no-img'}">${p.cover_url ? `<img src="${esc(Blog.fixUrl(p.cover_url))}" alt="" ${n > 2 ? 'loading="lazy"' : ''}>` : icon('article')}</div>
         <div class="body">
-          <div class="meta-line"><span>${icon('calendar')} ${esc(Blog.formatDate(p))}</span></div>
           <h2>${esc(p.title)}</h2>
+          <div class="meta-line" style="margin:0"><span>${icon('calendar')} ${esc(Blog.formatDate(p))}</span></div>
           <p>${esc(p.excerpt)}</p>
           <span class="link-arrow">Leer ${icon('arrow-right')}</span>
         </div>

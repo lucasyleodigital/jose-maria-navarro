@@ -17,8 +17,8 @@
     feature.innerHTML = `<a class="feature" href="${url(first)}" data-reveal>
         <div class="feature-media">${first.cover_url ? `<img src="${esc(Blog.fixUrl(first.cover_url))}" alt="" loading="lazy">` : ''}</div>
         <div>
-          <div class="meta-line"><span>${icon('calendar')} ${esc(Blog.formatDate(first))}</span></div>
           <h3>${esc(first.title)}</h3>
+          <div class="meta-line"><span>${icon('calendar')} ${esc(Blog.formatDate(first))}</span></div>
           <p>${esc(first.excerpt)}</p>
           <span class="link-arrow">Leer el artículo ${icon('arrow-right')}</span>
         </div></a>`;

@@ -16,7 +16,7 @@
     ceda: '<svg viewBox="0 0 60 60"><polygon points="4,8 56,8 30,54" fill="#fffefa" stroke="#d63a25" stroke-width="6" stroke-linejoin="round"/></svg>',
     linea: '<svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="8" fill="#3b3c43"/><rect x="28" y="4" width="4" height="52" fill="#fffefa"/></svg>',
     ambar: '<svg viewBox="0 0 60 60"><rect x="18" y="3" width="24" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="15" r="6" fill="#5a2a22"/><circle cx="30" cy="30" r="6" fill="#f4b400"/><circle cx="30" cy="45" r="6" fill="#1f3a2a"/></svg>',
-    peatonal: '<svg viewBox="0 0 60 60"><rect x="16" y="3" width="28" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="17" r="8" fill="#3a1d18"/><circle cx="30" cy="42" r="8" fill="#3fd47c"/></svg>'
+    peatonal: '<svg viewBox="0 0 60 60"><rect x="16" y="3" width="28" height="54" rx="8" fill="#17181c"/><circle cx="30" cy="17" r="8" fill="#3a1d18"/><circle cx="30" cy="42" r="8" fill="#3fbf6a"/></svg>'
   };
 
   const KIND = {

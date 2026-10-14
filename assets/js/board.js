@@ -81,7 +81,7 @@
     const k = r.width / C; // escala proyectada de la casilla
     const x = r.left + r.width / 2 - host.left;
     const y = r.top + r.height * 0.58 - host.top - lift.h * k;
-    sprite.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${Math.min(1.05, Math.max(0.24, k * 0.62))})`;
+    sprite.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${Math.min(1.05, Math.max(0.5, k * 0.62))})`;
   }
   const die = $('#die');
   if (die) die.innerHTML = dieFaces();
