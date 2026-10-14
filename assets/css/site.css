@@ -557,6 +557,6 @@ a:hover .link-arrow .icon, .link-arrow:hover .icon { transform: translateX(5px);
 }
 
 /* Logo: el mago junto al nombre */
-.brand-logo { height: 54px; width: auto; max-width: none; margin: -4px 0 -6px; filter: drop-shadow(0 4px 4px rgba(23, 24, 28, .2)); transform-origin: 50% 90%; transition: transform .5s var(--ease-out); }
+.brand-logo { height: 64px; width: auto; max-width: none; margin: -6px 0 -8px; filter: drop-shadow(0 4px 4px rgba(23, 24, 28, .2)); transform-origin: 50% 90%; transition: transform .5s var(--ease-out); }
 .brand:hover .brand-logo { transform: rotate(-8deg) scale(1.06); }
 @media (max-width: 900px) { .brand-logo { height: 46px; } }
